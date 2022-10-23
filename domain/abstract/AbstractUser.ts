@@ -1,5 +1,5 @@
 import { PositionTypes } from "../../Constants";
-import { IUser } from "../interfaces/IUser";
+import IUser from "../interfaces/IUser";
 
 export abstract class AbstractUser implements IUser {
   //#region Constructors
@@ -21,7 +21,7 @@ export abstract class AbstractUser implements IUser {
 
   //#region Virtual Methods
 
-  protected GetFullName?(): string {
+  public GetFullName(): string {
     return `${this.FirstName} ${this.LastName}`;
   }
 

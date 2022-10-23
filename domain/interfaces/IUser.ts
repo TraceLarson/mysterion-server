@@ -1,6 +1,6 @@
 import { PositionTypes } from "../../Constants";
 
-export interface IUser {
+export default interface IUser {
   RecordId: number;
   ID: number;
   FirstName: string;
