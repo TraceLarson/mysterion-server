@@ -10,7 +10,7 @@ export abstract class AbstractUser implements IUser {
 
   //#region Properties
 
-  RecordId: number = 0;
+  RecordId: string = "";
   ID: number = 0;
   FirstName: string = "";
   LastName: string = "";

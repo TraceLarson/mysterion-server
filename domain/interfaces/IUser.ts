@@ -1,7 +1,7 @@
 import { PositionTypes } from "../../Constants";
 
 export default interface IUser {
-  RecordId: number;
+  RecordId: string;
   ID: number;
   FirstName: string;
   LastName: string;

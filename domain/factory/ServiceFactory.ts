@@ -1,4 +1,4 @@
-import IUserService from "../service/IUserService";
+import IUserService from "../interfaces/IUserService";
 import UserService from "../service/UserService";
 
 export default class ServiceFactory {
