@@ -23,7 +23,7 @@ export class Admin extends AbstractUser {
 
   //#region Public Methods
 
-  public SetUserPosition(userRecordId: string, position: PositionTypes): void {
+  public SetUserPosition(userRecordId: number, position: PositionTypes): void {
     const userService: IUserService = ServiceFactory.CreateUserService();
     const user: IUser = userService.GetUser(userRecordId);
     userService.SetUserPositionType(user, position);
