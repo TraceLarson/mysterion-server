@@ -2,8 +2,8 @@ import Manager from "../Manager";
 import Operator from "../Operator";
 
 export interface IAsset {
-  RecordId: number;
-  ID: number;
+  RecordId: string;
+  Id: number;
   Description: string;
   Name: string;
   Managers: Manager[];

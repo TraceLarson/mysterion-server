@@ -1,12 +1,48 @@
+import "reflect-metadata";
 import { PositionTypes } from "../../Constants";
 import IUser from "../interfaces/IUser";
 import IUserService from "../interfaces/IUserService";
 import User from "../User";
+import { User as UserEntity } from "../../persistence/entity/User";
+import { DataSource } from "typeorm";
+import Manager from "../Manager";
+import { randomUUID } from "crypto";
 
 export default class UserService implements IUserService {
+  //#region Constructors
+
+  constructor(appDataSource: DataSource) {
+    this.AppDataSource = appDataSource;
+  }
+
+  //#endregion
+
+  //#region Properties
+
+  AppDataSource: DataSource;
+
+  //#endregion
+
   //#region Public Methods
 
-  public GetUser(userRecordId: number): IUser {
+  public async CreateNewUser(): Promise<void> {
+    const user: IUser = new UserEntity();
+    user.Id = Math.floor(Math.random() * 100);
+    user.Password = "123456";
+    user.FirstName = "Hailey";
+    user.LastName = "Larson";
+    user.Position = PositionTypes.Admin;
+    user.IsActive = true;
+
+    const userRepository = this.AppDataSource.getRepository(UserEntity);
+    await userRepository.save(user);
+    console.log("Saved a new user with Recordid: " + user.RecordId);
+
+    const savedUsers: IUser[] = await userRepository.find();
+    savedUsers.forEach((su) => console.log(su.RecordId));
+  }
+
+  public GetUser(userRecordId?: string): IUser {
     // interact with unit of work to recover user
 
     // create a mock user

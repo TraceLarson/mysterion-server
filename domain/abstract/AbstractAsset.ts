@@ -5,8 +5,8 @@ import { IAsset } from "../interfaces/IAsset";
 export abstract class AbstractAsset implements IAsset {
   //#region Properties
 
-  RecordId: number = 0;
-  ID: number = 0;
+  RecordId: string = "";
+  Id: number = 0;
   Description: string = "";
   Name: string = "";
   Managers: Manager[] = [];
