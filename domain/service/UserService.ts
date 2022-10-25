@@ -4,15 +4,14 @@ import IUser from "../interfaces/IUser";
 import IUserService from "../interfaces/IUserService";
 import User from "../User";
 import { User as UserEntity } from "../../persistence/entity/User";
-import { DataSource } from "typeorm";
-import Manager from "../Manager";
-import { randomUUID } from "crypto";
+import { DataSource, Repository } from "typeorm";
 
 export default class UserService implements IUserService {
   //#region Constructors
 
   constructor(appDataSource: DataSource) {
     this.AppDataSource = appDataSource;
+    this.Repository = this.AppDataSource.getRepository<UserEntity>(UserEntity);
   }
 
   //#endregion
@@ -20,6 +19,8 @@ export default class UserService implements IUserService {
   //#region Properties
 
   AppDataSource: DataSource;
+
+  Repository: Repository<UserEntity>;
 
   //#endregion
 
@@ -34,32 +35,59 @@ export default class UserService implements IUserService {
     user.Position = PositionTypes.Admin;
     user.IsActive = true;
 
-    const userRepository = this.AppDataSource.getRepository(UserEntity);
-    await userRepository.save(user);
+    // const userRepository = this.AppDataSource.getRepository(UserEntity);
+    await this.Repository.save(user);
     console.log("Saved a new user with Recordid: " + user.RecordId);
 
-    const savedUsers: IUser[] = await userRepository.find();
+    const savedUsers: IUser[] = await this.Repository.find();
     savedUsers.forEach((su) => console.log(su.RecordId));
   }
 
-  public GetUser(userRecordId?: string): IUser {
-    // interact with unit of work to recover user
+  public async GetUser(userRecordId?: string): Promise<IUser | null> {
+    // guard clause - user RecordId is null
+    if (!userRecordId) {
+      return null;
+    }
 
-    // create a mock user
-    const user: IUser = new User();
-    user.RecordId = userRecordId;
-    user.Id = 1;
-    user.FirstName = "Alejandro";
-    user.LastName = "Perez";
+    const foundUser = await this.Repository.findOneBy({ RecordId: userRecordId });
 
-    return user;
+    // guard clause - user not found
+    if (foundUser == null) {
+      return null;
+    }
+
+    return this.DomainCopy(foundUser);
   }
 
-  public SetUserPositionType(user: IUser, position: PositionTypes) {
-    const storedUser = this.GetUser(user.RecordId);
+  public async UpdateUserPositionType(user: IUser, position: PositionTypes) {
+    const storedUser = await this.GetUser(user.RecordId);
+
+    // guard clause - stored user not found
+    if (!storedUser) {
+      return;
+    }
+
     storedUser.Position = position;
-    // Commit stored User back to DB
-    // UnitOfWork.UpdateUser(storedUser);
+
+    await this.Repository.save(storedUser);
+  }
+
+  //#endregion
+
+  //#region Private Methods
+
+  private DomainCopy(foundUser: IUser): IUser {
+    const userDomain: IUser = new User();
+
+    userDomain.RecordId = foundUser.RecordId;
+    userDomain.Id = foundUser.Id;
+    userDomain.FirstName = foundUser.FirstName;
+    userDomain.LastName = foundUser.LastName;
+    userDomain.Password = foundUser.Password;
+    userDomain.Position = foundUser.Position;
+    userDomain.IsActive = foundUser.IsActive;
+
+    return userDomain;
   }
 
   //#endregion
