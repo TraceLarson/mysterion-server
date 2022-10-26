@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import IUserService, { IUserServiceConstructable } from "../interface/IUserService";
 import { AppDataSource } from "../../data-source";
-import { DataSource } from "typeorm";
 import IAdminService, { IAdminServiceConstructable } from "../interface/IAdminService";
 import IAssetService, { IAssetServiceConstructable } from "../interface/IAssetService";
 import ILeaseService, { ILeaseServiceConstructable } from "../interface/ILeaseService";
