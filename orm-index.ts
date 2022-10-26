@@ -5,11 +5,14 @@ import UserService from "./domain/service/UserService";
 import IUser from "./domain/interface/IUser";
 import User from "./domain/User";
 import { PositionTypes } from "./Constants";
+import { AppDataSource } from "./data-source";
 
 // AppDataSource.initialize()
 //   .then(async () => {
 (async () => {
   try {
+    await AppDataSource.initialize();
+
     const userService: IUserService = await ServiceFactory.CreateUserService(UserService);
 
     const user: IUser = new User();

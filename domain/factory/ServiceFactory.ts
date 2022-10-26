@@ -14,48 +14,39 @@ import IWellService, { IWellServiceConstructable } from "../interface/IWellServi
 export default class ServiceFactory {
   //#region PublicMethods
 
-  public static async CreateUserService(serviceConstructable: IUserServiceConstructable): Promise<IUserService> {
-    await AppDataSource.initialize();
+  public static CreateUserService(serviceConstructable: IUserServiceConstructable): IUserService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateAdminService(serviceConstructable: IAdminServiceConstructable): Promise<IAdminService> {
-    await AppDataSource.initialize();
+  public static CreateAdminService(serviceConstructable: IAdminServiceConstructable): IAdminService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateAssetService(serviceConstructable: IAssetServiceConstructable): Promise<IAssetService> {
-    await AppDataSource.initialize();
+  public static CreateAssetService(serviceConstructable: IAssetServiceConstructable): IAssetService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateLeaseService(serviceConstructable: ILeaseServiceConstructable): Promise<ILeaseService> {
-    await AppDataSource.initialize();
+  public static CreateLeaseService(serviceConstructable: ILeaseServiceConstructable): ILeaseService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateManagerService(serviceConstructable: IManagerServiceConstructable): Promise<IManagerService> {
-    await AppDataSource.initialize();
+  public static CreateManagerService(serviceConstructable: IManagerServiceConstructable): IManagerService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateOperatorService(serviceConstructable: IOperatorServiceConstructable): Promise<IOperatorService> {
-    await AppDataSource.initialize();
+  public static CreateOperatorService(serviceConstructable: IOperatorServiceConstructable): IOperatorService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreatePerformanceDataService(serviceConstructable: IPerformanceDataServiceConstructable): Promise<IPerformanceDataService> {
-    await AppDataSource.initialize();
+  public static CreatePerformanceDataService(serviceConstructable: IPerformanceDataServiceConstructable): IPerformanceDataService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateWellService(serviceConstructable: IWellServiceConstructable): Promise<IWellService> {
-    await AppDataSource.initialize();
+  public static CreateWellService(serviceConstructable: IWellServiceConstructable): IWellService {
     return new serviceConstructable(AppDataSource);
   }
 
-  public static async CreateRawDataService(serviceConstructable: IRawDataServiceConstructable): Promise<IRawDataService> {
-    await AppDataSource.initialize();
+  public static CreateRawDataService(serviceConstructable: IRawDataServiceConstructable): IRawDataService {
     return new serviceConstructable(AppDataSource);
   }
 
