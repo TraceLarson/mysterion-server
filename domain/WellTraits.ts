@@ -1,4 +1,6 @@
+import IWell from "./interface/IWell";
 import IWellTraits from "./interface/IWellTraits";
+import Well from "./Well";
 
 export default class WellTraits implements IWellTraits {
   //#region Constructors
@@ -26,6 +28,8 @@ export default class WellTraits implements IWellTraits {
   OrificeSize: number = 0;
 
   MeterRunSize: number = 0;
+
+  Well: IWell = new Well();
 
   //#endregion
 

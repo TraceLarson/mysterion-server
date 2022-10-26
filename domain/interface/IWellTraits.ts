@@ -1,3 +1,5 @@
+import IWell from "./IWell";
+
 export default interface IWellTraits {
   RecordId?: string | undefined;
 
@@ -16,4 +18,6 @@ export default interface IWellTraits {
   OrificeSize: number;
 
   MeterRunSize: number;
+
+  Well: IWell;
 }

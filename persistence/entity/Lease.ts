@@ -3,9 +3,9 @@ import ILease from "../../domain/interface/ILease";
 import IManager from "../../domain/interface/IManager";
 import IOperator from "../../domain/interface/IOperator";
 import IWell from "../../domain/interface/IWell";
-import { Well } from "./Well";
 import { Manager } from "./Manager";
 import { Operator } from "./Operator";
+import { Well } from "./Well";
 
 @Entity()
 export class Lease implements ILease {

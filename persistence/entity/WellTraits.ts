@@ -1,5 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
 import IWellTraits from "../../domain/interface/IWellTraits";
+import IWell from "../../domain/interface/IWell";
+import { Well } from "./Well";
 
 @Entity()
 export class WellTraits implements IWellTraits {
@@ -29,4 +31,7 @@ export class WellTraits implements IWellTraits {
 
   @Column()
   MeterRunSize: number;
+
+  @OneToOne(() => Well, (well) => well.Traits)
+  Well: IWell;
 }
