@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Generated } from "typeorm";
-import IUser from "../../domain/interfaces/IUser";
+import IUser from "../../domain/interface/IUser";
 import { PositionTypes } from "../../Constants";
 
 @Entity()

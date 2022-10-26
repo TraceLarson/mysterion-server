@@ -1,5 +1,5 @@
 import { PositionTypes } from "../../Constants";
-import IUser from "../interfaces/IUser";
+import IUser from "../interface/IUser";
 
 export abstract class AbstractUser implements IUser {
   //#region Constructors

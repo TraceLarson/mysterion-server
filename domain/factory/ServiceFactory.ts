@@ -1,14 +1,14 @@
 import "reflect-metadata";
-import IUserService, { IUserServiceConstructable } from "../interfaces/IUserService";
+import IUserService, { IUserServiceConstructable } from "../interface/IUserService";
 import { DataSource } from "typeorm";
-import IAdminService, { IAdminServiceConstructable } from "../interfaces/IAdminService";
-import IAssetService, { IAssetServiceConstructable } from "../interfaces/IAssetService";
-import ILeaseService, { ILeaseServiceConstructable } from "../interfaces/ILeaseService";
-import IManagerService, { IManagerServiceConstructable } from "../interfaces/IManagerService";
-import IOperatorService, { IOperatorServiceConstructable } from "../interfaces/IOperatorService";
-import IPerformanceDataService, { IPerformanceDataServiceConstructable } from "../interfaces/IPerformanceDataService";
-import IRawDataService, { IRawDataServiceConstructable } from "../interfaces/IRawDataService";
-import IWellService, { IWellServiceConstructable } from "../interfaces/IWellService";
+import IAdminService, { IAdminServiceConstructable } from "../interface/IAdminService";
+import IAssetService, { IAssetServiceConstructable } from "../interface/IAssetService";
+import ILeaseService, { ILeaseServiceConstructable } from "../interface/ILeaseService";
+import IManagerService, { IManagerServiceConstructable } from "../interface/IManagerService";
+import IOperatorService, { IOperatorServiceConstructable } from "../interface/IOperatorService";
+import IPerformanceDataService, { IPerformanceDataServiceConstructable } from "../interface/IPerformanceDataService";
+import IRawDataService, { IRawDataServiceConstructable } from "../interface/IRawDataService";
+import IWellService, { IWellServiceConstructable } from "../interface/IWellService";
 
 export default class ServiceFactory {
   //#region PublicMethods
