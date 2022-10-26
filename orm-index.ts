@@ -1,16 +1,16 @@
 import "reflect-metadata";
-import { AppDataSource } from "./data-source";
 import IUserService from "./domain/interface/IUserService";
 import ServiceFactory from "./domain/factory/ServiceFactory";
 import UserService from "./domain/service/UserService";
 import IUser from "./domain/interface/IUser";
 import User from "./domain/User";
 import { PositionTypes } from "./Constants";
-import Manager from "./domain/Manager";
 
-AppDataSource.initialize()
-  .then(async () => {
-    const userService: IUserService = ServiceFactory.CreateUserService(UserService, AppDataSource);
+// AppDataSource.initialize()
+//   .then(async () => {
+(async () => {
+  try {
+    const userService: IUserService = await ServiceFactory.CreateUserService(UserService);
 
     const user: IUser = new User();
     user.Id = Math.floor(Math.random() * 100);
@@ -26,8 +26,13 @@ AppDataSource.initialize()
     const firstUser = storedUsers[0] as User;
     console.log(`First Stored User:`);
     console.log(`${firstUser.Id}\r\n${firstUser.GetFullName()}`);
-  })
-  .catch((error) => console.log(error));
+  } catch (error: any) {
+    console.log(error);
+  }
+})();
+
+// })
+// .catch((error) => console.log(error));
 
 // AppDataSource.initialize()
 //   .then(async () => {

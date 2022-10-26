@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, Generated } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import IUser from "../../domain/interface/IUser";
 import { PositionTypes } from "../../Constants";
 

@@ -11,11 +11,17 @@ export abstract class AbstractUser implements IUser {
   //#region Properties
 
   RecordId: string = "";
+
   Id: number = 0;
+
   FirstName: string = "";
+
   LastName: string = "";
+
   Password: string = "";
+
   Position: PositionTypes = PositionTypes.None;
+
   IsActive: boolean = false;
 
   //#endregion
