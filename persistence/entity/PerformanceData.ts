@@ -1,7 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany } from "typeorm";
 import IPerformanceData from "../../domain/interface/IPerformanceData";
 import IRawData from "../../domain/interface/IRawData";
+import IWell from "../../domain/interface/IWell";
 import { RawData } from "./RawData";
+import { Well } from "./Well";
 
 @Entity()
 export class PerformanceData implements IPerformanceData {
@@ -34,6 +36,9 @@ export class PerformanceData implements IPerformanceData {
 
   @Column()
   Interval: number;
+
+  @OneToOne(() => Well, (well) => well.PerformanceData)
+  Well: IWell;
 
   @OneToMany(() => RawData, (rawData) => rawData.PerformanceData)
   RawData: IRawData[];

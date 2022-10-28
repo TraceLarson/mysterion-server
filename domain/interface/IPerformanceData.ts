@@ -1,4 +1,5 @@
 import IRawData from "./IRawData";
+import IWell from "./IWell";
 
 export default interface IPerformanceData {
   RecordId?: string | undefined;
@@ -20,6 +21,8 @@ export default interface IPerformanceData {
   Fuel: number;
 
   Interval: number;
+
+  Well: IWell;
 
   RawData: IRawData[];
 }

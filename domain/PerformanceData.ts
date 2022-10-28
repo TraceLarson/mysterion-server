@@ -1,5 +1,6 @@
 import IPerformanceData from "./interface/IPerformanceData";
 import IRawData from "./interface/IRawData";
+import IWell from "./interface/IWell";
 import RawData from "./RawData";
 
 export default class PerformanceData implements IPerformanceData {
@@ -31,11 +32,13 @@ export default class PerformanceData implements IPerformanceData {
 
   Interval: number = 0;
 
+  Well: IWell;
+
   RawData: IRawData[] = [];
 
   //#endregion
 
-  //#region Virtual Methods
+  //#region Public Methods
 
   //#endregion
 }
