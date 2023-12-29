@@ -1,8 +1,9 @@
-import { DataSource, Repository } from "typeorm";
-import { ProductionTypes } from "../../Constants";
-import IWell from "../interface/IWell";
-import IWellService from "../interface/IWellService";
-import Well from "../Well";
+import { DataSource, Repository } from 'typeorm';
+import { ProductionTypes } from '../../Constants';
+import IWell from '../interface/IWell';
+import IWellService from '../interface/IWellService';
+import Well from '../Well';
+import { Well as WellEntity } from '../../persistence/entity/Well';
 
 export default class WellService implements IWellService {
   //#region Constructors
@@ -29,7 +30,7 @@ export default class WellService implements IWellService {
     well = this.MapWellProperties(well, newWell);
 
     await this.Repository.save(well);
-    console.log("Saved a new well with Recordid: " + well.RecordId);
+    console.log('Saved a new well with Recordid: ' + well.RecordId);
 
     console.log(`Current wells:\r\n`);
     const savedWells: IWell[] = await this.Repository.find();
