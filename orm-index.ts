@@ -1,11 +1,11 @@
-import "reflect-metadata";
-import IUserService from "./domain/interface/IUserService";
-import ServiceFactory from "./domain/factory/ServiceFactory";
-import UserService from "./domain/service/UserService";
-import IUser from "./domain/interface/IUser";
-import User from "./domain/User";
-import { PositionTypes } from "./Constants";
-import { AppDataSource } from "./data-source";
+import 'reflect-metadata';
+import IUserService from './domain/interface/IUserService';
+import ServiceFactory from './domain/factory/ServiceFactory';
+import UserService from './domain/service/UserService';
+import IUser from './domain/interface/IUser';
+import User from './domain/User';
+import { PositionTypes } from './Constants';
+import { AppDataSource } from './data-source';
 
 // AppDataSource.initialize()
 //   .then(async () => {
@@ -17,9 +17,9 @@ import { AppDataSource } from "./data-source";
 
     const user: IUser = new User();
     user.Id = Math.floor(Math.random() * 100);
-    user.Password = "123456";
-    user.FirstName = "Emalyn";
-    user.LastName = "Larson";
+    user.Password = '123456';
+    user.FirstName = 'Emalyn';
+    user.LastName = 'Larson';
     user.Position = PositionTypes.Manager;
     user.IsActive = true;
 
